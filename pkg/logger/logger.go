@@ -6,19 +6,17 @@ import (
 
 // Interface - определяет методы логгера.
 type Interface interface {
-	Debug(message string, args ...interface{})
-	Info(message string, args ...interface{})
-	Warn(message string, args ...interface{})
-	Error(message string, args ...interface{})
-	Fatal(message string, args ...interface{})
+	Debug(message string, args ...zap.Field)
+	Info(message string, args ...zap.Field)
+	Warn(message string, args ...zap.Field)
+	Error(message string, args ...zap.Field)
+	Fatal(message string, args ...zap.Field)
 }
 
 // Logger - структура логгера.
 type Logger struct {
-	logger *zap.SugaredLogger
+	logger *zap.Logger
 }
-
-var _ Interface = (*Logger)(nil)
 
 // New - создаёт новый экземпляр логгера.
 func New(level string) *Logger {
@@ -42,32 +40,26 @@ func New(level string) *Logger {
 	}
 
 	logger, _ := cfg.Build()
-	sugar := logger.Sugar()
 
-	return &Logger{logger: sugar}
+	return &Logger{logger: logger}
 }
 
-// Debug - логирует отладочное сообщение.
-func (l *Logger) Debug(message string, args ...interface{}) {
-	l.logger.Debugf(message, args...)
+func (l *Logger) Debug(msg string, fields ...zap.Field) {
+	l.logger.Debug(msg, fields...)
 }
 
-// Info - логирует информационное сообщение.
-func (l *Logger) Info(message string, args ...interface{}) {
-	l.logger.Infof(message, args...)
+func (l *Logger) Info(msg string, fields ...zap.Field) {
+	l.logger.Info(msg, fields...)
 }
 
-// Warn - логирует предупреждение.
-func (l *Logger) Warn(message string, args ...interface{}) {
-	l.logger.Warnf(message, args...)
+func (l *Logger) Warn(msg string, fields ...zap.Field) {
+	l.logger.Warn(msg, fields...)
 }
 
-// Error - логирует ошибку.
-func (l *Logger) Error(message string, args ...interface{}) {
-	l.logger.Errorf(message, args...)
+func (l *Logger) Error(msg string, fields ...zap.Field) {
+	l.logger.Error(msg, fields...)
 }
 
-// Fatal - логирует критическую ошибку и завершает выполнение.
-func (l *Logger) Fatal(message string, args ...interface{}) {
-	l.logger.Fatalf(message, args...)
+func (l *Logger) Fatal(msg string, fields ...zap.Field) {
+	l.logger.Fatal(msg, fields...)
 }
