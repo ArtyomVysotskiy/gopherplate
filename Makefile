@@ -49,8 +49,8 @@ format: ### Run code formatter
 .PHONY: format
 
 run: deps swag-v1 ### swag run for API v1
-	go mod download && \
-	CGO_ENABLED=0 go run -tags migrate ./cmd/app
+	go mod download
+	go run -tags migrate ./cmd/app
 .PHONY: run
 
 docker-rm-volume: ### remove docker volume

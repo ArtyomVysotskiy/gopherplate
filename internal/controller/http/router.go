@@ -7,7 +7,6 @@ import (
 	"github.com/ansrivas/fiberprometheus/v2"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/swagger"
-
 	"gopherplate/config"
 	_ "gopherplate/docs" // Swagger docs.
 	"gopherplate/internal/controller/http/middleware"

@@ -7,7 +7,6 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	fiberRecover "github.com/gofiber/fiber/v2/middleware/recover"
-
 	"gopherplate/pkg/logger"
 )
 

@@ -1,12 +1,11 @@
 package v1
 
 import (
-	"go.uber.org/zap"
 	"net/http"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
-
+	"go.uber.org/zap"
 	"gopherplate/internal/entity"
 	"gopherplate/internal/usecase"
 	"gopherplate/pkg/logger"
