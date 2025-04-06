@@ -1,0 +1,9 @@
+-- Таблица токенов
+CREATE TABLE IF NOT EXISTS auth.RefreshToken
+(
+    idRefreshToken SERIAL PRIMARY KEY,
+    userId INT NOT NULL REFERENCES auth.users(idUser) ON DELETE CASCADE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    expires_at TIMESTAMP WITH TIME ZONE NOT NULL,
+    refreshToken VARCHAR(100) NOT NULL
+);
