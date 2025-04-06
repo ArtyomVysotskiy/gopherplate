@@ -20,7 +20,7 @@ x-backend-app-environment: &x-backend-app-environment
   # Logger
   LOG_LEVEL: "debug"
   # PG
-  PG_POOL_MAX: "2"
+  PG_POOL_MAX: "4"
   PG_URL: "postgres://user:myAwEsOm3pa55@w0rd@db:5432/db"
   # Metrics
   METRICS_ENABLED: "true"
@@ -40,8 +40,8 @@ services:
       - "5432:5432"
     networks:
       app_network:
-        aliases:
-          - db.lvh.me
+       aliases:
+         - db.lvh.me
 
   app:
     container_name: app
