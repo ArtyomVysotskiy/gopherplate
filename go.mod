@@ -1,4 +1,4 @@
-module gopherplate
+module github.com/ArtyomVysotskiy/gopherplate
 
 go 1.23.7
 
